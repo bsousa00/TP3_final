@@ -10,7 +10,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "ipvc.estg.trabalho1"
+        applicationId "com.exemple.tp3_final"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
