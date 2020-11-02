@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:hint="City"
+        android:hint="Nota"
         android:inputType="textAutoComplete"
         android:textSize="18sp" />
 
@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:hint="Country"
+        android:hint="Texto"
         android:inputType="textAutoComplete"
         android:textSize="18sp" />
 
