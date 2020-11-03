@@ -16,5 +16,6 @@ interface NotaDao {
     @Query("DELETE FROM nota_table")
     suspend fun deleteAll()
 
-
+    @Update
+    suspend fun updateNota(nota: Nota)
 }

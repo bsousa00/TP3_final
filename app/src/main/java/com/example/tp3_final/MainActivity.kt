@@ -68,4 +68,32 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.apagartudo -> {
+                notaViewModel.deleteAll()
+                true
+            }
+
+            R.id.alterar -> {
+                val nota = Nota(id = 1, nota = "xxx", texto = "xxx")
+                notaViewModel.updateNota(nota)
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+
+
 }
