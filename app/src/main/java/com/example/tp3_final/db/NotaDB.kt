@@ -34,13 +34,13 @@ public abstract class NotaDB : RoomDatabase() {
                     notaDao.deleteAll()
 
                     // Add sample cities.
-                    var nota = Nota(1, "Viana do Castelo", "Portugal")
+                    var nota = Nota(1, "Trabalho de PM", "Trabalho acado com sucesso")
                     notaDao.insert(nota)
 
-                    nota = Nota(2, "Porto", "Portugal")
+                    nota = Nota(2, "Trabalho de SC", "Programação arduino C")
                     notaDao.insert(nota)
 
-                    nota = Nota(3, "Aveiro", "Portugal")
+                    nota = Nota(3, "Trabalho de RSC", "Configurar os routers")
                     notaDao.insert(nota)
 
                 }
