@@ -15,6 +15,7 @@ class LineAdapter internal constructor(
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var notas = emptyList<Nota>() // Cached copy of notas
+    val activity =context as ItemClicked
 
     class NotaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val notaItemView: TextView = itemView.findViewById(R.id.textView)
@@ -28,11 +29,17 @@ class LineAdapter internal constructor(
     override fun onBindViewHolder(holder: NotaViewHolder, position: Int) {
         val current = notas[position]
         holder.notaItemView.text = current.id.toString() + " - " + current.nota + "-" + current.texto
+
+        holder.itemView.setOnClickListener(View.OnClickListener { activity.onClickListener(notas.get(position)) })
     }
 
     internal fun setNotas(notas: List<Nota>) {
         this.notas = notas
         notifyDataSetChanged()
+    }
+
+    interface ItemClicked{
+        fun onClickListener(nota: Nota)
     }
 
     override fun getItemCount() = notas.size

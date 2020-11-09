@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TP3_final">
+        <activity android:name=".Update"></activity>
         <activity android:name=".AddNota"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>

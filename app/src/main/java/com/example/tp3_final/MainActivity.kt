@@ -12,15 +12,17 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Update
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.example.tp3_final.adapter.LineAdapter
 import com.example.tp3_final.entities.Nota
 import com.example.tp3_final.viewModel.NotaViewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), LineAdapter.ItemClicked {
 
     private lateinit var notaViewModel: NotaViewModel
     private val newWordActivityRequestCode = 1
+    private val updateNotaActivityRequestCode = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,21 +53,52 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+        val pdelete = data?.getStringExtra(com.example.tp3_final.Update.EXTRA_REPLY_DELETE)
+
         if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
             val pnota = data?.getStringExtra(AddNota.EXTRA_REPLY_NOTA)
             val ptexto = data?.getStringExtra(AddNota.EXTRA_REPLY_TEXTO)
 
-            if (pnota!= null && ptexto != null) {
+            if (pnota != null && ptexto != null) {
                 val nota = Nota(nota = pnota, texto = ptexto)
                 notaViewModel.insert(nota)
             }
 
-        } else {
-            Toast.makeText(
-                applicationContext,
-                "Nota vazia: não inseriu nenhuma nota",
-                Toast.LENGTH_LONG).show()
+        } else if (requestCode == updateNotaActivityRequestCode && resultCode == Activity.RESULT_OK && pdelete == "update") {
+            val pid = data?.getIntExtra(com.example.tp3_final.Update.EXTRA_REPLY_ID, -1)
+            val pnota = data?.getStringExtra(com.example.tp3_final.Update.EXTRA_REPLY_NOTA)
+            val ptexto = data?.getStringExtra(com.example.tp3_final.Update.EXTRA_REPLY_TEXTO)
+
+            if (pid != null && pnota != null && ptexto != null) {
+                val nota = Nota(id = pid, nota = pnota, texto = ptexto)
+                notaViewModel.updateNota(nota)
+            }
+        } else if (pdelete != "update") {
+            val pid = data?.getIntExtra(com.example.tp3_final.Update.EXTRA_REPLY_ID, -1)
+            val pnota = data?.getStringExtra(com.example.tp3_final.Update.EXTRA_REPLY_NOTA)
+            val ptexto = data?.getStringExtra(com.example.tp3_final.Update.EXTRA_REPLY_TEXTO)
+
+            if (pid != -1 && pnota != null && ptexto != null) {
+                val nota = Nota(id = pid, nota = pnota, texto = ptexto)
+                notaViewModel.deleteByNota(nota)
+            } else {
+                Toast.makeText(
+                        applicationContext,
+                        "Nota vazia: não inseriu nenhuma nota",
+                        Toast.LENGTH_LONG).show()
+            }
         }
+    }
+
+    override fun onClickListener(nota: Nota) {
+        val intent = Intent(this, com.example.tp3_final.Update::class.java)
+
+
+        intent.putExtra("id", nota.id)
+        intent.putExtra("nota", nota.nota)
+        intent.putExtra("texto", nota.texto)
+
+        startActivityForResult(intent, updateNotaActivityRequestCode)
     }
 
 
@@ -93,7 +126,9 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
-
-
 }
+
+
+
+
+

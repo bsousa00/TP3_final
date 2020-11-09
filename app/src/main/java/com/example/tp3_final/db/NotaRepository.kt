@@ -25,4 +25,7 @@ class NotaRepository(private val notaDao: NotaDao) {
         notaDao.updateNota(nota)
     }
 
+    suspend fun deleteByNota(nota: Nota){
+        notaDao.deleteByNota(nota)
+    }
 }
