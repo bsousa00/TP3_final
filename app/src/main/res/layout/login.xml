@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/utilizador_nome"
+        android:id="@+id/utilizador"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
@@ -14,12 +14,12 @@
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/utlizador_password"
+        android:id="@+id/password"
+        android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
         android:hint="Password"
-        android:inputType="textAutoComplete"
         android:textSize="18sp" />
 
     <Button
