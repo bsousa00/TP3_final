@@ -42,6 +42,7 @@ class Login : AppCompatActivity() {
                         Toast.makeText(this@Login, "Login Falhou.", Toast.LENGTH_SHORT).show()
                     } else {
                         val intent = Intent(this@Login, MapsActivity::class.java)
+                        Toast.makeText(this@Login, "Login Efetuado.", Toast.LENGTH_SHORT).show()
                         startActivity(intent)
                     }
                 }
