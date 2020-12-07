@@ -24,6 +24,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="2dp"
         android:layout_marginRight="10dp"
+        android:background="@color/colorPrimary"
         android:textColor="#ffffff"
         android:text="Coordinates: "></TextView>
 
@@ -36,6 +37,7 @@
         android:layout_marginBottom="2dp"
         android:layout_marginRight="10dp"
         android:textColor="#ffffff"
+        android:background="@color/colorPrimary"
         android:layout_below="@id/txtcoordenadas"
         android:text="Distância: "></TextView>
 
@@ -46,6 +48,7 @@
         android:layout_marginRight="10dp"
         android:textColor="#ffffff"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
         android:layout_marginLeft="10dp"
         android:layout_below="@id/txtdistancia"
         android:text="Morada: "></TextView>

@@ -82,11 +82,25 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 super.onLocationResult(p0)
                 lastLocation = p0.lastLocation
                 var loc = LatLng(lastLocation.latitude, lastLocation.longitude)
-                mMap.addMarker(MarkerOptions().position(loc).title("Marker"))
+                //mMap.addMarker(MarkerOptions().position(loc).title("Marker"))
+
+                if (ActivityCompat.checkSelfPermission(this@MapsActivity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this@MapsActivity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                ) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return
+                }
+                mMap.isMyLocationEnabled = true
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 15.0f))
 
                 // preenche as coordenadas
                 findViewById<TextView>(R.id.txtcoordenadas).setText("Lat: " + loc.latitude + " - Long: " + loc.longitude)
+
                 // reverse geocoding
                 val address = getAddress(lastLocation.latitude, lastLocation.longitude)
                 findViewById<TextView>(R.id.txtmorada).setText("Morada: " + address)
@@ -95,7 +109,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         lastLocation.latitude, lastLocation.longitude,
                         continenteLat, continenteLong).toString())
 
-                Log.d("**** SARA", "new location received - " + loc.latitude + " -" + loc.longitude)
+                Log.d("**** BS", "new location received - " + loc.latitude + " -" + loc.longitude)
             }
         }
 
@@ -115,24 +129,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return
-        }
-        mMap.isMyLocationEnabled = true
+
 
         // Add a marker in Sydney and move the camera
        /* val sydney = LatLng(-34.0, 151.0)
