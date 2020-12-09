@@ -12,5 +12,5 @@
     <string name="morada">Morada :</string>
     <string name="menu2">Adicionar Marcador</string>
     <string name="descricao">Descrição</string>
-    <string name="problema_inserido">Problema inserido</string>
+    <string name="problema_inserido">Marcador inserido</string>
 </resources>

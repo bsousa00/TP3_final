@@ -11,5 +11,5 @@
     <string name="descricao">Description</string>
     <string name="login_falhou">Logged in</string>
     <string name="login_efetuado">Login failed</string>
-    <string name="problema_inserido">Inserted problem</string>
+    <string name="problema_inserido">Inserted marker</string>
 </resources>
