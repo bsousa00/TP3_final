@@ -9,4 +9,7 @@
     <string name="morada">Address :</string>
     <string name="menu2">Add Marker</string>
     <string name="descricao">Description</string>
+    <string name="login_falhou">Logged in</string>
+    <string name="login_efetuado">Login failed</string>
+    <string name="problema_inserido">Inserted problem</string>
 </resources>

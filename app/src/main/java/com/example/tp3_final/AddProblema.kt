@@ -60,7 +60,7 @@ class AddProblema : AppCompatActivity() {
         call.enqueue(object : Callback<OutputPost>{
             override fun onResponse(call: Call<OutputPost>, response: Response<OutputPost>) {
                 if (response.isSuccessful){
-                    Toast.makeText(this@AddProblema, "Problema inserido", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@AddProblema, R.string.problema_inserido, Toast.LENGTH_SHORT).show()
                     startActivity(intent)
                 }
             }
