@@ -1,6 +1,7 @@
 package com.example.tp3_final
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
@@ -247,6 +248,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 startActivity(intent)
                 true
             }
+            R.id.logout -> {
+                val intent = Intent(this, Login::class.java)
+                var token2=getSharedPreferences("logout", Context.MODE_PRIVATE)
+                var edit2=token2.edit()
+                edit2.putString("logout_name", " ")
+                edit2.commit()
+                startActivity(intent)
+                true
+            }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

@@ -49,6 +49,13 @@ class Login : AppCompatActivity() {
                         var edit= token.edit()
                         edit.putInt("iduser", d.id.toInt())
                         edit.commit()
+
+
+                        var token2=getSharedPreferences("logout", Context.MODE_PRIVATE)
+                        var edit2=token2.edit()
+                        edit2.putString("logout_name", utilizador)
+                        edit2.commit()
+
                         startActivity(intent)
                     }
                 }
@@ -65,4 +72,16 @@ class Login : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
+
+    override fun onStart() {
+        super.onStart()
+        var token2 = getSharedPreferences("logout", Context.MODE_PRIVATE)
+        if(token2.getString("logout_name", " ")!= " "){
+            val intent = Intent(this@Login, MapsActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+
+
 }
