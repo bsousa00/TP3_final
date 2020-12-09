@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TP3_final</string>
+    <string name="title_activity_maps">Mapa</string>
+    <string name="login_nome">Nome</string>
+    <string name="login_password">Password</string>
+    <string name="login_login">Login</string>
+    <string name="login_notas">Notas</string>
+    <string name="login_efetuado">Login efetuado</string>
+    <string name="login_falhou">Login falhou</string>
+    <string name="distancia">Distancia :</string>
+    <string name="morada">Morada :</string>
+    <string name="menu2">Adicionar Marcador</string>
+    <string name="descricao">Descrição</string>
+</resources>

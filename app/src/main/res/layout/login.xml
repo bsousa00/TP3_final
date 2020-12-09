@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:hint="Nome"
+        android:hint="@string/login_nome"
         android:inputType="textAutoComplete"
         android:textSize="18sp" />
 
@@ -19,14 +19,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:hint="Password"
+        android:hint="@string/login_password"
         android:textSize="18sp" />
 
     <Button
         android:id="@+id/button_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="@string/login_login"
         android:onClick="logar"
         />
 
@@ -34,7 +34,7 @@
         android:id="@+id/button_notas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Notas"
+        android:text="@string/login_notas"
         android:onClick="notas"
         />
 

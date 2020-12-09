@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/add_problema"
-        android:title="Adicionar marcador"
+        android:title="@string/menu2"
         app:showAsAction="always">
     </item>
 

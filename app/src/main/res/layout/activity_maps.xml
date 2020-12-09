@@ -39,7 +39,7 @@
         android:textColor="#ffffff"
         android:background="@color/colorPrimary"
         android:layout_below="@id/txtcoordenadas"
-        android:text="Distância: "></TextView>
+        android:text="@string/distancia"></TextView>
 
     <TextView
         android:id="@+id/txtmorada"
@@ -51,7 +51,7 @@
         android:background="@color/colorPrimary"
         android:layout_marginLeft="10dp"
         android:layout_below="@id/txtdistancia"
-        android:text="Morada: "></TextView>
+        android:text="@string/morada"></TextView>
 
 
 
