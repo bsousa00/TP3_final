@@ -196,13 +196,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onPause() {
         super.onPause()
         fusedLocationClient.removeLocationUpdates(locationCallback)
-        Log.d("**** SARA", "onPause - removeLocationUpdates")
+        Log.d("**** BS", "onPause - removeLocationUpdates")
     }
 
     public override fun onResume() {
         super.onResume()
         startLocationUpdates()
-        Log.d("**** SARA", "onResume - startLocationUpdates")
+        Log.d("**** BS", "onResume - startLocationUpdates")
     }
 
     private fun startLocationUpdates() {
