@@ -1,12 +1,17 @@
 package com.example.tp3_final
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -39,6 +44,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private var continenteLat: Double = 0.0
     private var continenteLong: Double = 0.0
 
+    private lateinit var Lat : String
+    private lateinit var Lng : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,6 +89,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 super.onLocationResult(p0)
                 lastLocation = p0.lastLocation
                 var loc = LatLng(lastLocation.latitude, lastLocation.longitude)
+
+                Lat=loc.latitude.toString()
+                Lng=loc.longitude.toString()
+
                 //mMap.addMarker(MarkerOptions().position(loc).title("Marker"))
 
                 if (ActivityCompat.checkSelfPermission(this@MapsActivity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this@MapsActivity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
@@ -100,6 +111,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 // preenche as coordenadas
                 findViewById<TextView>(R.id.txtcoordenadas).setText("Lat: " + loc.latitude + " - Long: " + loc.longitude)
+
+
 
                 // reverse geocoding
                 val address = getAddress(lastLocation.latitude, lastLocation.longitude)
@@ -215,5 +228,26 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         Location.distanceBetween(lat1, lng1, lat2, lng2, results)
         // distance in meter
         return results[0]
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu2,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
+            R.id.add_problema -> {
+                val intent = Intent(this, AddProblema::class.java)
+
+
+                intent.putExtra("Lat", Lat)
+                intent.putExtra("Lng", Lng)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

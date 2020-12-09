@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -129,6 +130,8 @@ class MainActivity : AppCompatActivity(), LineAdapter.ItemClicked {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+
 }
 
 

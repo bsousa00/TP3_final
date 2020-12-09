@@ -15,6 +15,14 @@ interface EndPoints {
     @GET("/myslim/api/problema")
     fun getProblemas(): Call<List<Problema>>
 
+    @FormUrlEncoded
+    @POST("/myslim/api/problemasadicionar")
+    fun getProblemasadicionar(
+            @Field("lat") lat:String?,
+            @Field("lng") lng:String?,
+            @Field("descr") descr:String?,
+            @Field("iduser") iduser:Int?
+                                ): Call<OutputPost>
 
 
     @FormUrlEncoded

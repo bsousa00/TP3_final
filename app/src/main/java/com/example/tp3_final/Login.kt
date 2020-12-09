@@ -1,5 +1,6 @@
 package com.example.tp3_final
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -43,6 +44,11 @@ class Login : AppCompatActivity() {
                     } else {
                         val intent = Intent(this@Login, MapsActivity::class.java)
                         Toast.makeText(this@Login, "Login Efetuado.", Toast.LENGTH_SHORT).show()
+                        val d: OutputPost = response.body()!!
+                        var token=getSharedPreferences("id", Context.MODE_PRIVATE)
+                        var edit= token.edit()
+                        edit.putInt("iduser", d.id.toInt())
+                        edit.commit()
                         startActivity(intent)
                     }
                 }
